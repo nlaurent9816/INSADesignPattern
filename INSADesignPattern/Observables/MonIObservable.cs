@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace INSADesignPattern.Observables
 {
-    class Observable1
+    public interface MonIObservable
     {
+        Boolean Execute();
     }
 }

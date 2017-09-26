@@ -42,8 +42,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Observables\IObservable1.cs" />
-    <Compile Include="Observables\Observable1.cs" />
+    <Compile Include="Observables\HelloObservable.cs" />
+    <Compile Include="Observables\MonIObservable.cs" />
+    <Compile Include="Observables\MonObserver.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
