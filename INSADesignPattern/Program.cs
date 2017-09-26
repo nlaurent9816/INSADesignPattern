@@ -1,4 +1,5 @@
-﻿using System;
+﻿using INSADesignPattern.Observables;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,6 +11,15 @@ namespace INSADesignPattern
     {
         static void Main(string[] args)
         {
+            //Définition de l'Observer et des Observables
+            MonObserver userObserver = new MonObserver();
+            HelloObservable hello = new HelloObservable();
+            SmileyObservable smiley = new SmileyObservable();
+
+            userObserver.Register("hello", smiley);
+            userObserver.Register("hello", hello);
+            //userObserver.Unregister("hello", smiley);
+
             string line;
             Console.WriteLine("");
             Console.WriteLine("     __   __     __  ________  _____");
@@ -23,8 +33,12 @@ namespace INSADesignPattern
             Console.WriteLine("Write something (type 'exit' to exit the program).");
             while ((line = Console.ReadLine()) != "exit")
             {
-                Console.WriteLine("You wrote : ");
-                Console.WriteLine(line);
+                if (0 == userObserver.Trigger(line))
+                {
+                    Console.WriteLine("You wrote : ");
+                    Console.WriteLine(line);
+                }
+
             }
 
             Console.WriteLine("Goodbye.");
