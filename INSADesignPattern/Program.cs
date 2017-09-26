@@ -11,11 +11,15 @@ namespace INSADesignPattern
     {
         static void Main(string[] args)
         {
+            //Définition de l'Observer et des Observables
             MonObserver userObserver = new MonObserver();
-            HelloObservable userHelloObservable = new HelloObservable();
+            HelloObservable hello = new HelloObservable();
+            SmileyObservable smiley = new SmileyObservable();
 
-            userObserver.Register("hello", userHelloObservable);
-            
+            userObserver.Register("hello", smiley);
+            userObserver.Register("hello", hello);
+            //userObserver.Unregister("hello", smiley);
+
             string line;
             Console.WriteLine("");
             Console.WriteLine("     __   __     __  ________  _____");

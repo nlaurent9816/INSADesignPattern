@@ -36,9 +36,12 @@ namespace INSADesignPattern.Observables
             };
         }
 
-        public void Unregister(MonIObservable observable)
+        public void Unregister(string keyword,MonIObservable observable)
         {
-            //TODO
+            List<MonIObservable> theList;
+
+            if (listeners.TryGetValue(keyword, out theList))
+                theList.Remove(observable);
         }
 
         public int Trigger(string keyword)
@@ -51,8 +54,9 @@ namespace INSADesignPattern.Observables
             {
                 foreach (MonIObservable observable in theList)
                 {
-                    observable.Execute();
                     observableCalled++;
+                    if (false == observable.Execute())
+                        break;
                 }
             }
 
