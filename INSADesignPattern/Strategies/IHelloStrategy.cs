@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace INSADesignPattern.Strategies
 {
-    interface IHelloStraegy
+    public interface IHelloStrategy
     {
         bool RunStrategy(string name);
     }

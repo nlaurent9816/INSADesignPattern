@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using INSADesignPattern.Strategies.HelloStrategies;
 
 namespace INSADesignPattern.Strategies
 {
@@ -25,7 +26,7 @@ namespace INSADesignPattern.Strategies
             currentName = Console.ReadLine();
         }
 
-        public int GetContext()
+        public IHelloStrategy GetStrategy()
         {
             if (currentName == "")
             {
@@ -33,9 +34,18 @@ namespace INSADesignPattern.Strategies
             }
 
             if (currentName == "")
-                return -1;
+                return new HelloStratNoName();
             else
-                return ++helloCounter;
+            {
+                helloCounter++;
+                System.Diagnostics.Debug.WriteLine(helloCounter);
+                if (helloCounter < 2)
+                    return new HelloStratA();
+                else if (helloCounter < 6)
+                    return new HelloStratB();
+                else
+                    return new HelloStratC();
+            }
 
         }
     }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace INSADesignPattern.Strategies.HelloStrategies
 {
-    class HelloStratNoName : INSADesignPattern.Strategies.IHelloStraegy
+    class HelloStratNoName : INSADesignPattern.Strategies.IHelloStrategy
     {
         public bool RunStrategy(string name)
         {
