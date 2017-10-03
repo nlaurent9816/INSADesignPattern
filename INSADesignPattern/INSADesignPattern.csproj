@@ -58,7 +58,7 @@
     <Compile Include="Strategies\HelloStrategies\HelloStratC.cs" />
     <Compile Include="Strategies\HelloStrategies\HelloStratB.cs" />
     <Compile Include="Strategies\HelloStrategies\HelloStratA.cs" />
-    <Compile Include="Strategies\IHelloStraegy.cs" />
+    <Compile Include="Strategies\IHelloStrategy.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

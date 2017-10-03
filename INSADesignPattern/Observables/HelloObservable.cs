@@ -18,23 +18,7 @@ namespace INSADesignPattern.Observables
 
         public Boolean Execute()
         {
-            int contextCounter;
-            IHelloStraegy usedStrat;
-
-            contextCounter = monContexte.GetContext();
-            //On choisit la stratégie selon le contexte
-            if (contextCounter < 1)
-                usedStrat = new HelloStratNoName();
-            else if (contextCounter < 2)
-                usedStrat = new HelloStratA();
-            else if (contextCounter < 6)
-                usedStrat = new HelloStratB();
-            else
-                usedStrat = new HelloStratC();
-
-            //on exécute la stratégie
-            return usedStrat.RunStrategy(monContexte.CurrentName);
-
+            return monContexte.GetStrategy().RunStrategy(monContexte.CurrentName);
         }
 
     }
