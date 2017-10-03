@@ -19,17 +19,9 @@ namespace INSADesignPattern.Observables
         public Boolean Execute()
         {
             int contextCounter;
-            string name;
             IHelloStraegy usedStrat;
 
-            //Demande le nom
-            Console.WriteLine("What's your name ?");
-            name = Console.ReadLine();
-
-            //On donne le nom reçu au contexte qui va nous dire combien de fois de suite
-            //le nom donné a été utilisé.
-            contextCounter = monContexte.GetContext(name);
-
+            contextCounter = monContexte.GetContext();
             //On choisit la stratégie selon le contexte
             if (contextCounter < 1)
                 usedStrat = new HelloStratNoName();
@@ -41,7 +33,7 @@ namespace INSADesignPattern.Observables
                 usedStrat = new HelloStratC();
 
             //on exécute la stratégie
-            return usedStrat.RunStrategy(name);
+            return usedStrat.RunStrategy(monContexte.CurrentName);
 
         }
 

@@ -14,22 +14,29 @@ namespace INSADesignPattern.Strategies
         public HelloContext()
         {
             currentName = "";
+            helloCounter = 0;
         }
 
-        public string CurrentName { get => currentName; set => currentName = value; }
+        public string CurrentName { get => currentName; }
 
-        public int GetContext(string name)
+        private void askName()
         {
-            if (name == "")
-                return -1;
+            Console.WriteLine("What's your name ?");
+            currentName = Console.ReadLine();
+        }
 
-            if (name == currentName)
-                return ++helloCounter;
-            else
+        public int GetContext()
+        {
+            if (currentName == "")
             {
-                currentName = name;
-                return helloCounter = 1;
+                askName();
             }
+
+            if (currentName == "")
+                return -1;
+            else
+                return ++helloCounter;
+
         }
     }
 }

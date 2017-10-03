@@ -44,6 +44,11 @@ namespace INSADesignPattern.Observables
                 theList.Remove(observable);
         }
 
+        public void Reset()
+        {
+            listeners.Clear();
+        }
+
         public int Trigger(string keyword)
         {
             List<MonIObservable> theList;
