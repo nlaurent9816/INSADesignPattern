@@ -14,9 +14,16 @@ namespace INSADesignPattern.Observables
 
             Console.WriteLine("What's your name ?");
             name = Console.ReadLine();
-            Console.WriteLine("Hello " + name);
-
-            return true;
+            if (name != "")
+            {
+                Console.WriteLine("Hello " + name);
+                return true;
+            }
+            else
+            {
+                Console.WriteLine("Oh, you don't want to tell me your name...");
+                return false;
+            }
         }
 
     }

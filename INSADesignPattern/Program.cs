@@ -16,8 +16,8 @@ namespace INSADesignPattern
             HelloObservable hello = new HelloObservable();
             SmileyObservable smiley = new SmileyObservable();
 
-            userObserver.Register("hello", smiley);
             userObserver.Register("hello", hello);
+            userObserver.Register("hello", smiley);
             //userObserver.Unregister("hello", smiley);
 
             string line;
@@ -31,6 +31,7 @@ namespace INSADesignPattern
             Console.WriteLine("Desing Patterns - Anthony Maudry amaudry@gmail.com");
             Console.WriteLine("Hello,");
             Console.WriteLine("Write something (type 'exit' to exit the program).");
+
             while ((line = Console.ReadLine()) != "exit")
             {
                 if (0 == userObserver.Trigger(line))

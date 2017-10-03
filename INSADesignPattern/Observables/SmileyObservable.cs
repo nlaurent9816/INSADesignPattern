@@ -11,7 +11,7 @@ namespace INSADesignPattern.Observables
         public bool Execute()
         {
             Console.WriteLine(":)");
-            return false;
+            return true;
         }
     }
 }
