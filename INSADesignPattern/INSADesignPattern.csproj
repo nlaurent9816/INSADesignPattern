@@ -48,6 +48,12 @@
     <Compile Include="Observables\MonObserver.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Strategies\HelloContext.cs" />
+    <Compile Include="Strategies\HelloStrategies\HelloStratNoName.cs" />
+    <Compile Include="Strategies\HelloStrategies\HelloStratC.cs" />
+    <Compile Include="Strategies\HelloStrategies\HelloStratB.cs" />
+    <Compile Include="Strategies\HelloStrategies\HelloStratA.cs" />
+    <Compile Include="Strategies\IHelloStrategy.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

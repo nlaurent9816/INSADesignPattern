@@ -1,22 +1,24 @@
 ﻿using System;
+using INSADesignPattern.Strategies;
+using INSADesignPattern.Strategies.HelloStrategies;
 
 namespace INSADesignPattern.Observables
 {
     public class HelloObservable : MonIObservable
     {
-	    public HelloObservable()
-	    {
-	    }
+
+        HelloContext monContexte;
+
+        //Constructeur
+        //Récupère le contexte utilisé
+        public HelloObservable(HelloContext helloContext)
+        {
+            monContexte = helloContext;
+        }
 
         public Boolean Execute()
         {
-            string name;
-
-            Console.WriteLine("What's your name ?");
-            name = Console.ReadLine();
-            Console.WriteLine("Hello " + name);
-
-            return true;
+            return monContexte.GetStrategy().RunStrategy(monContexte.CurrentName);
         }
 
     }

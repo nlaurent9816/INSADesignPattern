@@ -47,14 +47,14 @@ namespace INSADesignPattern.Observables
         public int Trigger(string keyword)
         {
             List<MonIObservable> theList;
-
             int observableCalled = 0;
 
+            //On récupère la liste d'observables correspondant au mot-clé
             if(listeners.TryGetValue(keyword, out theList))
             {
-                foreach (MonIObservable observable in theList)
+                foreach (MonIObservable observable in theList)  // /!\ Cette boucle est break si une des exécutions ne marche pas
                 {
-                    observableCalled++;
+                    observableCalled++;     //On compte le nombre d'observables exécutés
                     if (false == observable.Execute())
                         break;
                 }
