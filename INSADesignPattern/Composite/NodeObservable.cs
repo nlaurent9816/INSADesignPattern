@@ -11,15 +11,17 @@ namespace INSADesignPattern.Composite
     class NodeObservable : MonIObservable
     {
         private List<IMenuComponent> enfants;
+        private MonObserver usedObserver;
 
-        public NodeObservable(List<IMenuComponent> children)
+        public NodeObservable(List<IMenuComponent> children, MonObserver usedObserver)
         {
             enfants = children;
+            this.usedObserver = usedObserver;
         }
 
         public bool Execute()
         {
-            Program.userObserver.Reset();
+            usedObserver.Reset();
 
             foreach (IMenuComponent component in enfants)
             {
@@ -30,7 +32,7 @@ namespace INSADesignPattern.Composite
                 Console.ResetColor();
 
                 //Partie 2 : édition de l'observeur
-                Program.userObserver.Register(component.GetKeyWord(), component.GetObservable());
+                usedObserver.Register(component.GetKeyWord(), component.GetObservable());
 
             }
 
