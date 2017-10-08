@@ -12,24 +12,44 @@ namespace INSADesignPattern
     class Program
     {
         public static MonObserver userObserver;
+        public static MonObserver menuObserver;
 
         static Node generateMenu()
         {
+            //Génération des objets composant le menu
+            Leaf pointsHelp = new Leaf("Objectif", "points");
+            Leaf infiniteHelp = new Leaf("Infini", "infinite");
+            Leaf timedHelp = new Leaf("Chronométré", "timed");
+            Leaf how = new Leaf("Comment jouer", "how");
+            Leaf list = new Leaf("Liste", "list");
             Leaf score = new Leaf("Score", "score");
-            Leaf points = new Leaf("Objectif", "points");
-            Leaf infinite = new Leaf("Infini", "infinite");
-            Leaf timed = new Leaf("Chronométré", "timed");
+            Leaf pointsPlay = new Leaf("Objectif", "points");
+            Leaf infinitePlay = new Leaf("Infini", "infinite");
+            Leaf timedPlay = new Leaf("Chronométré", "timed");
             Leaf jouer = new Leaf("Partie rapide", "jouer");
 
-            Node typePlay = new Node("Type de partie", "type");
-            Node root = new Node("Menu", "menu");
+            Node typeHelp = new Node("Type de partie", "type", menuObserver);
+            Node commands = new Node("Commandes", "commands", menuObserver);
+            Node help = new Node("Aide", "help", menuObserver);
+            Node typePlay = new Node("Type de partie", "type", menuObserver);
+            Node root = new Node("Menu", "menu", menuObserver);
 
+
+            //On relie les noeuds entre eux pour former l'arbre des menus
             root.AddChild(jouer);
             root.AddChild(typePlay);
-                typePlay.AddChild(timed);
-                typePlay.AddChild(infinite);
-                typePlay.AddChild(points);
+                typePlay.AddChild(timedPlay);
+                typePlay.AddChild(infinitePlay);
+                typePlay.AddChild(pointsPlay);
             root.AddChild(score);
+            root.AddChild(help);
+                help.AddChild(commands);
+                    commands.AddChild(list);
+                    commands.AddChild(how);
+                help.AddChild(typeHelp);
+                    typeHelp.AddChild(timedHelp);
+                    typeHelp.AddChild(infiniteHelp);
+                    typeHelp.AddChild(pointsHelp);
 
             return root;
 
@@ -41,6 +61,7 @@ namespace INSADesignPattern
         {
             //Définition de l'Observer, des Observables et du contexte
             userObserver = new MonObserver();
+            menuObserver = new MonObserver();
             HelloContext userHelloContext = new HelloContext();
             HelloObservable hello = new HelloObservable(userHelloContext);
             SmileyObservable smiley = new SmileyObservable();
@@ -71,7 +92,7 @@ namespace INSADesignPattern
             //Questrion-réponse avec l'Observer qui réagit aux mots clés définits plus haut
             while ((line = Console.ReadLine()) != "exit")
             {
-                if (0 == userObserver.Trigger(line))
+                if (0 == (userObserver.Trigger(line) + menuObserver.Trigger(line)))
                 {
                     Console.WriteLine("You wrote : ");
                     Console.WriteLine(line);

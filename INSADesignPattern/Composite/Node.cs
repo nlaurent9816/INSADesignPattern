@@ -12,12 +12,14 @@ namespace INSADesignPattern.Composite
         private string description;
         private string keyword;
         private List<IMenuComponent> enfants;
+        private MonObserver usedObserver;
 
-        public Node(string description, string keyword)
+        public Node(string description, string keyword, MonObserver usedObserver)
         {
             this.description = description;
             this.keyword = keyword;
             enfants = new List<IMenuComponent>();
+            this.usedObserver = usedObserver;
         }
 
         public string GetDescription()
@@ -37,7 +39,7 @@ namespace INSADesignPattern.Composite
 
         public MonIObservable GetObservable()
         {
-            return new NodeObservable(enfants);
+            return new NodeObservable(enfants,usedObserver);
         }
     }
 }

@@ -7,6 +7,7 @@ using INSADesignPattern.Strategies.HelloStrategies;
 
 namespace INSADesignPattern.Strategies
 {
+    //Classe comportant les informations sur le contexte d'exécution de HelloObservable.
     public class HelloContext
     {
         private string currentName;
@@ -20,17 +21,19 @@ namespace INSADesignPattern.Strategies
 
         public string CurrentName { get => currentName; }
 
-        private void askName()
+        private void AskName()
         {
             Console.WriteLine("What's your name ?");
             currentName = Console.ReadLine();
         }
 
+        //Appelé à chaque exécution de HelloObservable, cette classe va mettre à jour
+        //le contexte et en déduire la stratégie à appliquer.
         public IHelloStrategy GetStrategy()
         {
             if (currentName == "")
             {
-                askName();
+                AskName();
             }
 
             if (currentName == "")
