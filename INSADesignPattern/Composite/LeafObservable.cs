@@ -11,6 +11,10 @@ namespace INSADesignPattern.Composite
     {
         private Leaf linkedLeaf;
 
+        /// <summary>
+        /// Un Observable implémentant l'interface MonIObservable et dont le déclanchement exécute la feuille/champ de menu liée
+        /// </summary>
+        /// <param name="linkedLeaf">feuille/champ de menu lié</param>
         public LeafObservable(Leaf linkedLeaf)
         {
             this.linkedLeaf = linkedLeaf;
@@ -18,8 +22,7 @@ namespace INSADesignPattern.Composite
 
         public bool Execute()
         {
-            Console.WriteLine("Executing leaf " + linkedLeaf.GetDescription());
-            return true;
+            return linkedLeaf.ExecuteLeaf();
         }
     }
 }

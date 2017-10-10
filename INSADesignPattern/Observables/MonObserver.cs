@@ -11,11 +11,20 @@ namespace INSADesignPattern.Observables
 
         private Dictionary<string,List<MonIObservable>> listeners;
 
+        /// <summary>
+        /// Observeur réagissant à des mots clés.
+        /// Lorsque déclanché avec la méthode MonObserver.Trigger(string), recherche les observables enregistrés sur ce mot-clé et les exécutent.
+        /// </summary>
         public MonObserver()
         {
             listeners = new Dictionary<string, List<MonIObservable>>();
         }
 
+        /// <summary>
+        /// Inscrit un observable sur un mot-clé
+        /// </summary>
+        /// <param name="keyword">mot-clé auquel réagir</param>
+        /// <param name="observable">observable à inscrire</param>
         public void Register (string keyword, MonIObservable observable)
         {
             List<MonIObservable> theList;
@@ -36,6 +45,11 @@ namespace INSADesignPattern.Observables
             };
         }
 
+        /// <summary>
+        /// Désinscrit un observable sur un mot-clé
+        /// </summary>
+        /// <param name="keyword">mot-clé auquel réagissait l'Observable</param>
+        /// <param name="observable">observable à désinscrire</param>
         public void Unregister(string keyword,MonIObservable observable)
         {
             List<MonIObservable> theList;
@@ -44,11 +58,19 @@ namespace INSADesignPattern.Observables
                 theList.Remove(observable);
         }
 
+        /// <summary>
+        /// Désinscrit tout les observables actuellemnt inscrits.
+        /// </summary>
         public void Reset()
         {
             listeners.Clear();
         }
 
+        /// <summary>
+        /// Déclanche l'exécution des Observables inscrits réagissants au mot clé passé en paramètre.
+        /// </summary>
+        /// <param name="keyword">Mot-clé filtrant les observables à exécuter.</param>
+        /// <returns>Le nombre d'observables exécutés. Une erreur dans l'exécution d'un observable empèche l'exécution des suivants.</returns>
         public int Trigger(string keyword)
         {
             List<MonIObservable> theList;

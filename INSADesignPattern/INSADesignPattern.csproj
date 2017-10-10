@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Composite\HelpLeaf.cs" />
     <Compile Include="Composite\IMenuComponent.cs" />
     <Compile Include="Composite\Leaf.cs" />
     <Compile Include="Composite\LeafObservable.cs" />

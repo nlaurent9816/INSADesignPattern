@@ -14,6 +14,12 @@ namespace INSADesignPattern.Composite
         private List<IMenuComponent> enfants;
         private MonObserver usedObserver;
 
+        /// <summary>
+        /// Genère un noeud/menu 
+        /// </summary>
+        /// <param name="description"></param>
+        /// <param name="keyword"></param>
+        /// <param name="usedObserver"></param>
         public Node(string description, string keyword, MonObserver usedObserver)
         {
             this.description = description;
